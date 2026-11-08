@@ -2,6 +2,9 @@
 
 > **Safety notice:** This project is designed to automate repeated one-time-password (OTP) or SMS requests to third-party services. That can disrupt services and send unwanted messages to people. **Do not use it against real services, phone numbers, or people.** This README intentionally does not provide instructions for launching the live request workflow.
 
+<img width="529" height="285" alt="Screenshot 2026-11-08 at 15 26 12" src="https://github.com/user-attachments/assets/bb150d93-63d9-4ba4-9755-cddb17f51bcd" />
+
+
 ## Project status
 
 This repository is provided for code review and safety-focused maintenance. Its current implementation includes third-party request configurations and concurrent request logic; it is not a benign load-testing tool. The repository does not include a documented consent mechanism, a local-only mode, or a test suite. Treat it as unsafe to operate until those issues are addressed.
