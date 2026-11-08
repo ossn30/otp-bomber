@@ -89,4 +89,4 @@ class APIProvider:
             response = False
         finally:
             self.lock.release()
-            return response
+            # return response
