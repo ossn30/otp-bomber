@@ -1,15 +1,8 @@
 import sys
 import random
 import os
-try:
-    import requests
-    from colorama import Fore, Style
-except ImportError:
-    print("\tSome dependencies could not be imported (possibly not installed)")
-    print(
-        "Type `pip3 install -r requirements.txt` to "
-        " install all required packages")
-    sys.exit(1)
+import requests
+from colorama import Fore, Style
 
 ALL_COLORS = [Fore.GREEN, Fore.RED, Fore.YELLOW, Fore.BLUE,
               Fore.MAGENTA, Fore.CYAN, Fore.WHITE]

@@ -10,19 +10,15 @@ class APIProvider:
     delay = 0
     status = True
 
-    def __init__(self, cc, target, mode, delay=0):
-        try:
-            PROVIDERS = json.load(open('apidata.json', 'r'))
-        except Exception:
-            PROVIDERS = requests.get(
-                "https://raw.githubusercontent.com/anshxs/otp-bomber/refs/heads/main/apidata.json"
-            ).json()
+    def __init__(self, cc, target, mode, delay=0,timeout=5):
+        PROVIDERS = json.load(open('apidata.json', 'r'))
         self.config = None
         self.cc = cc
         self.target = target
         self.mode = mode
         self.index = 0
         self.lock = threading.Lock()
+        self.timeout = timeout
         self.api_version = PROVIDERS.get("version", "1.0.0")
         APIProvider.delay = delay
         providers = PROVIDERS.get(mode.lower(), {})
@@ -69,7 +65,7 @@ class APIProvider:
             return None
         identifier = self.config.pop("identifier", "").lower()
         del self.config['name']
-        self.config['timeout'] = 30
+        self.config['timeout'] = self.timeout
         response = requests.request(**self.config)
         return identifier in response.text.lower()
 
@@ -89,4 +85,4 @@ class APIProvider:
             response = False
         finally:
             self.lock.release()
-            # return response
+        return response

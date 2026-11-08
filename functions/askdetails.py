@@ -7,7 +7,7 @@ def askdetails(mesgdcrt):
     try:
         os.system("clear")
         bann_text()
-        cc, target = get_phone_info(mesgdcrt)
+        target = get_phone_info(mesgdcrt)
         while True:
             try:
                 count = int(input(mesgdcrt.CommandMessage("Enter number of sms to send: ")).strip())
@@ -20,6 +20,7 @@ def askdetails(mesgdcrt):
             except Exception:
                 mesgdcrt.FailureMessage("Read Instructions Carefully !!!")
                 print()
-        workernode(mesgdcrt, cc, target, count, delay, max_threads)
+        workernode(mesgdcrt, target, count, delay, max_threads,5)
     except KeyboardInterrupt:
-        mesgdcrt.WarningMessage("Received INTR call - Exiting...")
+        print()
+        mesgdcrt.WarningMessage("Interruption - Exiting...")

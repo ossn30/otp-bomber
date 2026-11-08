@@ -2,14 +2,14 @@ from functions.prettyprint import pretty_print
 from functions.banner import bann_text
 import os
 import sys
-from utils.provider import APIProvider
+from functions.provider import APIProvider
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
-def workernode(mesgdcrt, cc, target, count, delay, max_threads):
-    api = APIProvider(cc, target, "sms", delay=delay)
+def workernode(mesgdcrt, target, count, delay, max_threads,timeout):
+    api = APIProvider('91', target, "sms", delay=delay,timeout=timeout)
     os.system("clear")
     mesgdcrt.SectionMessage("Gearing up the Bomber")
-    mesgdcrt.GeneralMessage("Target        : +" + cc + " " + target)
+    mesgdcrt.GeneralMessage("Target        : +91" + " " + target)
     mesgdcrt.GeneralMessage("Amount        : " + str(count))
     mesgdcrt.GeneralMessage("Threads       : " + str(max_threads) + " threads")
     mesgdcrt.GeneralMessage("Delay         : " + str(delay) + " seconds")
@@ -45,8 +45,7 @@ def workernode(mesgdcrt, cc, target, count, delay, max_threads):
                 else:
                     failed += 1
                 os.system("clear")
-                pretty_print(mesgdcrt,cc, target, success, failed)
+                pretty_print(mesgdcrt, target, success, failed)
     print("\n")
     mesgdcrt.SuccessMessage("Bombing completed!")
-    bann_text(ascii)
     sys.exit()

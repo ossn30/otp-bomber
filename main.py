@@ -1,4 +1,4 @@
 from functions.askdetails import askdetails
-from utils.decorators import MessageDecorator
+from functions.decorators import MessageDecorator
 
-askdetails(MessageDecorator("icon"))
+askdetails(MessageDecorator())
